@@ -24,4 +24,4 @@ docker stop admin
 docker rm admin
 
 # 使用 docker stack 启动服务
-docker run --name admin -d -p 800:80  gjf/admin
+docker run --name admin -d -p 801:80  gjf/admin
