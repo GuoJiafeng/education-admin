@@ -1,23 +1,27 @@
 export PATH=/root/node-v12.8.1-linux-x64/bin:$PATH
-npm config set registry http://registry.npm.taobao.org/
-# 安装yarn
-npm i yarn -g
-# yarn切换为淘宝源
-yarn config set registry https://registry.npm.taobao.org
-###
+
+yarn config set puppeteer_download_host https://npm.taobao.org/mirrors
+
+yarn add puppeteer --ignore-scripts
+
+cd node_modules/puppeteer
+
+yarn exec node install.js
 
 # 安装项目中的依赖
-yarn
+##yarn
+cd ..
+
+cd ..
 # 打包
 yarn build
 
-
 # 创建新镜像
-docker build -t gjf/web . && \
+docker build -t gjf/admin . && \
 
-docker stop web
+docker stop admin
 
-docker rm web
+docker rm admin
 
 # 使用 docker stack 启动服务
-docker run --name web -d -p 800:80  gjf/web
+docker run --name admin -d -p 800:80  gjf/admin
